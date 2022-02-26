@@ -1,62 +1,44 @@
 <script context="module" lang="ts">
-	export const prerender = true;
+	export async function load({ fetch }) {
+		let res = await fetch('/gallery.json');
+
+		if (res.ok) {
+			return {
+				props: {
+					images: await res.json()
+				}
+			};
+		}
+		return {
+			status: res.status,
+			error: new Error()
+		};
+	}
 </script>
 
 <script lang="ts">
-	import Counter from '$lib/Counter.svelte';
+	import Image from '$lib/Image.svelte';
+
+	export let images = [];
 </script>
 
 <svelte:head>
 	<title>Home</title>
 </svelte:head>
 
-<section>
-	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
-		</div>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
-	<Counter />
-	<Counter />
-	<Counter />
-</section>
+<div class="container">
+	{#each images as image}
+		<Image image={image.image} name={image.name} price={image.price} />
+	{/each}
+</div>
 
 <style>
-	section {
+	.container {
 		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
+		column-gap: 10px;
 	}
 
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	.foo {
+		color: red;
 	}
 </style>

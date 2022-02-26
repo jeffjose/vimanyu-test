@@ -1,0 +1,8 @@
+[
+	{ "name": "name1", "image": "https://picsum.photos/200/300?random=1", "price": 20 },
+	{ "name": "name2", "image": "https://picsum.photos/200/300?random=2", "price": 20 },
+	{ "name": "name3", "image": "https://picsum.photos/200/300?random=3", "price": 20 },
+	{ "name": "name4", "image": "https://picsum.photos/200/300?random=4", "price": 20 },
+	{ "name": "name5", "image": "https://picsum.photos/200/300?random=5", "price": 20 },
+	{ "name": "name6", "image": "https://picsum.photos/200/300?random=6", "price": 20 }
+]
