@@ -27,6 +27,9 @@
 	</h2>
 
 	<Counter />
+	<Counter />
+	<Counter />
+	<Counter />
 </section>
 
 <style>
